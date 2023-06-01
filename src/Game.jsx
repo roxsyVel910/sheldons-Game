@@ -18,7 +18,21 @@ function Game() {
   const [result, setResult] = useState(null);
   const [disabled, setDisabled] = useState(false);
  
-  const handlePlay = (userChoice) => {};
+  const handlePlay = (choice) => {
+    setUserChoice(choice);
+    setDisabled(true);
+    const randomChoice = Math.floor(Math.random() * 5);
+
+    setTimeout(() => {
+      setComputerChoice(randomChoice);
+    }, 1500);
+
+    setTimeout(() => {
+      setResult(getResult(choice, randomChoice));
+    }, 3000);
+
+    clearTimeout();
+  };
 
   return (
     <>
