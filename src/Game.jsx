@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 
 function Game() {
@@ -15,8 +15,12 @@ function Game() {
 
   return (
     <>
-      <div> hola mundo
+      <div className="flex items-center justify-center h-screen bg-gray-800">
+      <div className="rounded-lg p-4 bg-gray-500">
+        <h1 className="text-3xl mb-4 text-center font-bold">¡A jugar!</h1>
+       
       </div>
+    </div>
     </>
   )
 }
