@@ -1,5 +1,9 @@
 import { useState, useEffect } from 'react'
 
+const getResult = (userChoice, computerChoice) => {
+  if (userChoice === computerChoice) {
+    return 0;
+  }
 
 function Game() {
 
@@ -18,6 +22,15 @@ function Game() {
   const [result, setResult] = useState(null);
   const [disabled, setDisabled] = useState(false);
  
+  useEffect(() => {
+    if (userChoice !== null) {
+      setUserMessage(
+        `Has elegido ${options[userChoice]?.emoji} - ${options[userChoice]?.name}`
+      );
+    }
+  }, [userChoice]);
+
+
   const handlePlay = (choice) => {
     setUserChoice(choice);
     setDisabled(true);
@@ -33,6 +46,7 @@ function Game() {
 
     clearTimeout();
   };
+
 
   return (
     <>
@@ -50,6 +64,8 @@ function Game() {
             {option.emoji}
             </button>
           ))}
+          {userChoice !== null && <p className="text-xl mt-4">{userMessage}</p>}
+
           </div>
       </div>
     </div>
